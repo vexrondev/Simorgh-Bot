@@ -1,0 +1,10 @@
+config.php
+config.php.tmp
+installed.lock
+*.tmp
+storage/*
+!storage/.htaccess
+*.sql
+*.sql.gz
+*.bak
+.DS_Store
