@@ -2,7 +2,7 @@
 # =====================================================================
 #  Simorgh Bot — Server Manager
 #  Command : simorgh   (also: simorgh-bot)
-#  Repo    : https://github.com/Raven404xv/simorgh-bot
+#  Repo    : https://github.com/vexrondev/Simorgh-Bot-
 #  Channel : https://t.me/SimorghFree
 #  Group   : https://t.me/SimorghBotGroup
 # =====================================================================
@@ -11,8 +11,8 @@ set -u
 set -o pipefail
 
 # ---------- Configuration ----------
-REPO_URL="https://github.com/Raven404xv/simorgh-bot.git"
-RAW_BASE="https://raw.githubusercontent.com/Raven404xv/simorgh-bot/main"
+REPO_URL="https://github.com/vexrondev/Simorgh-Bot-.git"
+RAW_BASE="https://raw.githubusercontent.com/vexrondev/Simorgh-Bot-/main"
 COMMAND_PATH="/usr/local/bin/simorgh"
 ALIAS_PATH="/usr/local/bin/simorgh-bot"
 INSTALL_DIR="/var/www/simorgh-bot"
