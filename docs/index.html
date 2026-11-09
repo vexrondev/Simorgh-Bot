@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="سیمرغ — ربات فروشگاه پنل‌های تلگرام با PHP و MySQL. راهنمای نصب روی هاست cPanel و سرور مجازی (VPS).">
+<meta name="description" content="سیمرغ؛ ربات فروشگاهی تلگرام برای فروش خودکار پنل‌ها. راهنمای نصب روی سرور مجازی و هاست cPanel.">
 <meta name="theme-color" content="#0b1118">
 <title>سیمرغ | راهنمای نصب و راه‌اندازی</title>
 <style>
@@ -37,8 +37,9 @@
   }
   a { color: var(--accent-2); text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .ltr { direction: ltr; unicode-bidi: isolate; font-family: Consolas, "Courier New", monospace; overflow-wrap: anywhere; }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 18px 64px; }
+  .ltr { direction: ltr; unicode-bidi: isolate; font-family: Consolas, "Courier New", monospace; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 18px 64px; }
+  section, details { scroll-margin-top: 16px; }
 
   /* Header */
   .topbar {
@@ -47,66 +48,82 @@
   }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 19px; }
   .brand .logo {
-    width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2)); font-size: 20px;
+    width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center; font-size: 21px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 8px 24px rgba(91,140,255,.35);
   }
+  .toplinks { display: flex; flex-wrap: wrap; gap: 8px; }
   .toplinks a {
-    display: inline-block; margin-inline-start: 8px; padding: 7px 14px; border-radius: 999px;
-    border: 1px solid var(--line); background: var(--panel); color: var(--text); font-size: 14px;
+    padding: 7px 15px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--panel); color: var(--text); font-size: 14px;
   }
   .toplinks a:hover { border-color: var(--accent-2); text-decoration: none; }
 
   /* Hero */
-  .hero { padding: 56px 8px 34px; text-align: center; }
-  .hero .eyebrow {
-    display: inline-block; padding: 6px 14px; border-radius: 999px; font-size: 13px; color: var(--gold);
-    background: rgba(245,196,81,.08); border: 1px solid rgba(245,196,81,.25);
+  .hero {
+    position: relative; margin-top: 26px; padding: 56px 26px 46px; text-align: center; overflow: hidden;
+    border-radius: 24px; border: 1px solid var(--line);
+    background:
+      radial-gradient(600px 260px at 80% 0%, rgba(91,140,255,.28), transparent 70%),
+      radial-gradient(520px 240px at 10% 100%, rgba(45,212,191,.2), transparent 70%),
+      linear-gradient(160deg, #132033, #0d1620);
+  }
+  .eyebrow {
+    display: inline-block; padding: 6px 15px; border-radius: 999px; font-size: 13px; color: var(--gold);
+    background: rgba(245,196,81,.1); border: 1px solid rgba(245,196,81,.3);
   }
   .hero h1 {
-    margin: 18px 0 10px; font-size: 40px; line-height: 1.5;
-    background: linear-gradient(90deg, var(--accent-2), var(--accent));
+    margin: 18px 0 12px; font-size: 40px; line-height: 1.6;
+    background: linear-gradient(90deg, #ffffff, var(--accent-2) 60%, var(--accent));
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  .hero p.lead { margin: 0 auto; max-width: 720px; color: var(--muted); font-size: 17px; }
+  .lead { margin: 0 auto; max-width: 740px; color: var(--muted); font-size: 17px; }
   .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 22px; }
-  .chip { padding: 6px 14px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); font-size: 13px; color: var(--muted); }
-  .cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 26px; }
+  .chip { padding: 6px 14px; border-radius: 999px; background: rgba(11,17,24,.6); border: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  .cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
   .btn {
-    display: inline-block; padding: 11px 22px; border-radius: 12px; font-weight: bold; font-size: 15px;
+    display: inline-block; padding: 12px 24px; border-radius: 13px; font-weight: bold; font-size: 15px;
     background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #06121a;
+    box-shadow: 0 10px 28px rgba(45,212,191,.22);
   }
-  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); box-shadow: none; }
   .btn:hover { text-decoration: none; filter: brightness(1.08); }
 
   /* Stats */
-  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 26px 0 8px; }
-  .stat { padding: 16px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); text-align: center; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 22px 0 6px; }
+  .stat { padding: 18px 12px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); text-align: center; }
   .stat b { display: block; font-size: 22px; color: var(--accent-2); }
   .stat span { font-size: 13px; color: var(--muted); }
 
   /* Sections */
-  h2 { margin: 46px 0 14px; font-size: 24px; display: flex; align-items: center; gap: 10px; }
+  h2 { margin: 52px 0 16px; font-size: 24px; display: flex; align-items: center; gap: 12px; }
   h2::before {
-    content: ""; width: 6px; height: 24px; border-radius: 4px;
+    content: ""; width: 6px; height: 26px; border-radius: 4px; flex: 0 0 6px;
     background: linear-gradient(180deg, var(--accent-2), var(--accent));
   }
-  h3 { margin: 22px 0 8px; font-size: 18px; color: var(--accent-2); }
+  h3 { margin: 26px 0 10px; font-size: 18px; color: var(--accent-2); }
   p { margin: 8px 0; }
   ul, ol { padding-inline-start: 22px; margin: 8px 0; }
   li { margin: 6px 0; }
   .muted { color: var(--muted); }
 
-  .grid-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
-  .feature { padding: 18px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); }
-  .feature h4 { margin: 0 0 6px; font-size: 16px; }
+  /* Feature grid */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .feature {
+    padding: 20px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line);
+    transition: border-color .2s ease;
+  }
+  .feature:hover { border-color: rgba(45,212,191,.5); }
+  .feature .icon { font-size: 24px; }
+  .feature h4 { margin: 10px 0 6px; font-size: 16px; }
   .feature p { margin: 0; color: var(--muted); font-size: 14px; }
 
   /* Steps */
   .steps { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 14px 0; }
-  .step { min-width: 0; padding: 18px 20px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
-  .step h4 { margin: 0 0 6px; font-size: 16px; display: flex; align-items: center; gap: 10px; }
+  .step { min-width: 0; padding: 20px 22px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
+  .step h4 { margin: 0 0 8px; font-size: 16px; display: flex; align-items: center; gap: 10px; }
   .step .n {
-    display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; flex: 0 0 30px;
+    display: inline-grid; place-items: center; width: 32px; height: 32px; flex: 0 0 32px; border-radius: 11px;
     background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #06121a; font-weight: bold;
   }
 
@@ -117,7 +134,7 @@
     padding: 7px 10px; background: #0c131c; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--muted);
   }
   .code button {
-    padding: 4px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel);
+    padding: 4px 13px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel);
     color: var(--text); font-family: inherit; font-size: 12px; cursor: pointer;
   }
   .code button:hover { border-color: var(--accent-2); }
@@ -134,23 +151,32 @@
   /* Tables */
   .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--line); margin: 12px 0; }
   table { width: 100%; border-collapse: collapse; font-size: 15px; background: var(--panel); }
-  th, td { padding: 11px 13px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
+  th, td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
   th { background: #0e1620; color: var(--muted); font-weight: normal; }
   tr:last-child td { border-bottom: none; }
 
   /* FAQ */
-  details { margin: 10px 0; padding: 14px 18px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
+  details { margin: 10px 0; padding: 15px 19px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
   summary { cursor: pointer; font-weight: bold; }
   details[open] summary { color: var(--accent-2); margin-bottom: 6px; }
 
-  footer { margin-top: 52px; padding: 26px 0 0; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: 14px; }
+  footer {
+    margin-top: 56px; padding: 28px 0 0; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: 14px;
+  }
   footer .links a { margin: 0 10px; }
 
-  @media (max-width: 760px) {
-    .hero h1 { font-size: 30px; }
+  @media (max-width: 800px) {
+    .grid-3 { grid-template-columns: minmax(0, 1fr); }
     .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid-2 { grid-template-columns: minmax(0, 1fr); }
-    .toplinks a { margin-top: 6px; }
+    .hero h1 { font-size: 30px; }
+  }
+  @media (max-width: 420px) {
+    .hero { padding: 40px 18px 34px; }
+    .hero h1 { font-size: 26px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .feature { transition: none; }
   }
 </style>
 </head>
@@ -162,7 +188,7 @@
     <span class="logo">🔮</span>
     <span>سیمرغ</span>
   </div>
-  <nav class="toplinks">
+  <nav class="toplinks" aria-label="پیمایش صفحه">
     <a href="#server">نصب روی سرور</a>
     <a href="#host">نصب روی هاست</a>
     <a href="#faq">پرسش‌ها</a>
@@ -179,11 +205,11 @@
     <span class="chip">MySQL / MariaDB</span>
     <span class="chip">Webhook</span>
     <span class="chip">HTTPS</span>
-    <span class="chip">MIT License</span>
+    <span class="chip">مجوز MIT</span>
   </div>
   <div class="cta">
     <a class="btn" href="#server">راهنمای نصب روی سرور</a>
-    <a class="btn ghost" href="https://github.com/vexrondev/Simorgh-Bot-">مخزن GitHub</a>
+    <a class="btn ghost" href="https://github.com/vexrondev/Simorgh-Bot">مخزن GitHub</a>
   </div>
 </section>
 
@@ -195,13 +221,13 @@
 </div>
 
 <h2 id="features">امکانات</h2>
-<div class="grid-2">
-  <div class="feature"><h4>🛒 خرید خودکار پنل</h4><p>خرید در بازه‌های ۱، ۲ و ۳ ماهه؛ اطلاعات ورود بلافاصله پس از پرداخت تحویل داده می‌شود.</p></div>
-  <div class="feature"><h4>💰 کیف پول و تأیید رسید</h4><p>شارژ کیف پول با ارسال رسید و تأیید مدیر. هر رسید فقط یک‌بار اعتبار دارد و تکراری پذیرفته نمی‌شود.</p></div>
-  <div class="feature"><h4>🎁 تست رایگان</h4><p>سهمیه‌ی قابل تنظیم برای جذب مشتری جدید، با امکان فعال یا غیرفعال کردن از پنل مدیریت.</p></div>
-  <div class="feature"><h4>👥 زیرمجموعه‌گیری</h4><p>هر کاربر دعوت‌شده، پاداش معرف خود را به همراه دارد؛ رشد فروشگاه با دوستان شما.</p></div>
-  <div class="feature"><h4>📣 ارسال همگانی</h4><p>ارسال پیام به همه‌ی کاربران با نمایش درصد پیشرفت، و عضویت اجباری در کانال برای حفظ مخاطب.</p></div>
-  <div class="feature"><h4>📱 مینی‌اپ فارسی</h4><p>رابط کاربری کاملاً فارسی، با حالت روشن و تاریک و تجربه‌ای روان روی موبایل.</p></div>
+<div class="grid-3">
+  <div class="feature"><div class="icon">🛒</div><h4>خرید خودکار پنل</h4><p>خرید در بازه‌های ۱، ۲ و ۳ ماهه؛ اطلاعات ورود بلافاصله پس از پرداخت تحویل داده می‌شود.</p></div>
+  <div class="feature"><div class="icon">💰</div><h4>کیف پول و تأیید رسید</h4><p>شارژ کیف پول با ارسال رسید و تأیید مدیر. هر رسید فقط یک‌بار اعتبار دارد.</p></div>
+  <div class="feature"><div class="icon">🎁</div><h4>تست رایگان</h4><p>سهمیه‌ی قابل تنظیم برای جذب مشتری جدید، با امکان فعال یا غیرفعال کردن از پنل مدیریت.</p></div>
+  <div class="feature"><div class="icon">👥</div><h4>زیرمجموعه‌گیری</h4><p>هر کاربر دعوت‌شده، پاداش معرف خود را به همراه دارد؛ رشد فروشگاه با دوستان شما.</p></div>
+  <div class="feature"><div class="icon">📣</div><h4>ارسال همگانی</h4><p>ارسال پیام به همه‌ی کاربران با نمایش درصد پیشرفت، و عضویت اجباری در کانال برای حفظ مخاطب.</p></div>
+  <div class="feature"><div class="icon">📱</div><h4>مینی‌اپ فارسی</h4><p>رابط کاربری کاملاً فارسی، با حالت روشن و تاریک و تجربه‌ای روان روی موبایل.</p></div>
 </div>
 
 <h2 id="requirements">پیش‌نیازها</h2>
@@ -211,7 +237,7 @@
   <tr><td>سیستم‌عامل سرور</td><td>Ubuntu 22.04 یا جدیدتر، یا Debian 12 یا جدیدتر (سرور تازه توصیه می‌شود)</td></tr>
   <tr><td>دسترسی</td><td>کاربر <span class="ltr">root</span> یا کاربری با <span class="ltr">sudo</span></td></tr>
   <tr><td>پورت‌ها</td><td>پورت <span class="ltr">443</span> یا <span class="ltr">8443</span> باید آزاد باشد</td></tr>
-  <tr><td>دامنه (اختیاری)</td><td>رکورد <span class="ltr">A</span> دامنه به IP سرور اشاره کند؛ با دامنه گواهی معتبر گرفته می‌شود</td></tr>
+  <tr><td>دامنه (اختیاری)</td><td>رکورد <span class="ltr">A</span> دامنه به IP سرور اشاره کند؛ با دامنه، گواهی معتبر دریافت می‌شود</td></tr>
   <tr><td>ربات و شناسه</td><td>توکن از <span class="ltr">@BotFather</span> و شناسه‌ی عددی از <span class="ltr">@userinfobot</span></td></tr>
 </table>
 </div>
@@ -222,7 +248,7 @@
 <div class="steps">
   <div class="step">
     <h4><span class="n">۱</span> اتصال به سرور</h4>
-    <p>با SSH به سرور وصل شوید (با PuTTY، Bitvise یا ترمینال سیستم‌عامل خود).</p>
+    <p>با SSH به سرور متصل شوید؛ مثلاً با PuTTY، Bitvise یا ترمینال سیستم‌عامل خود.</p>
   </div>
 
   <div class="step">
@@ -230,9 +256,9 @@
     <p>این دستور را اجرا کنید. منوی مدیریت باز می‌شود و دستور <span class="ltr">simorgh</span> ساخته می‌شود.</p>
     <div class="code">
       <div class="bar"><span>Shell</span><button type="button" data-copy>کپی</button></div>
-      <pre>sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/vexrondev/Simorgh-Bot-/main/simorgh.sh)"</pre>
+      <pre>sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/vexrondev/Simorgh-Bot/main/simorgh.sh)"</pre>
     </div>
-    <p class="muted">از این به بعد برای باز کردن منو فقط این دستور را بزنید:</p>
+    <p class="muted">از این به بعد، برای باز کردن منو فقط این دستور را بزنید:</p>
     <div class="code">
       <div class="bar"><span>Shell</span><button type="button" data-copy>کپی</button></div>
       <pre>simorgh</pre>
@@ -242,21 +268,21 @@
   <div class="step">
     <h4><span class="n">۳</span> نصب از منو</h4>
     <ol>
-      <li>گزینه‌ی <span class="ltr">1</span> (Install the bot) را انتخاب کنید.</li>
-      <li>اگر دامنه دارید <span class="ltr">y</span> بزنید و دامنه و ایمیل را وارد کنید. اگر ندارید <span class="ltr">n</span> بزنید تا ربات روی IP سرور نصب شود.</li>
+      <li>گزینه‌ی <span class="ltr">1</span> (نصب ربات) را انتخاب کنید.</li>
+      <li>اگر دامنه دارید <span class="ltr">y</span> بزنید و دامنه و ایمیل را وارد کنید. اگر دامنه ندارید <span class="ltr">n</span> بزنید تا ربات روی IP سرور نصب شود.</li>
       <li>پورت و روش گواهی به‌صورت خودکار پیشنهاد می‌شوند. خلاصه‌ی نصب را بخوانید و <span class="ltr">Enter</span> بزنید.</li>
-      <li>منتظر بمانید تا نصب کامل شود؛ این مرحله چند دقیقه طول می‌کشد.</li>
+      <li>تا پایان نصب صبر کنید؛ این مرحله چند دقیقه طول می‌کشد.</li>
     </ol>
-    <div class="notice warn">اگر <span class="ltr">ufw</span> فعال باشد و پورت بسته باشد، نصب‌کننده اجازه می‌خواهد آن را باز کند. اگر سرور شما فایروال پنل ارائه‌دهنده دارد، همان پورت را هم آنجا باز کنید.</div>
+    <div class="notice warn">اگر <span class="ltr">ufw</span> فعال باشد و پورت بسته باشد، نصب‌کننده اجازه می‌خواهد آن را باز کند. اگر سرور شما فایروال پنل ارائه‌دهنده دارد، همان پورت را در آن پنل هم باز کنید.</div>
   </div>
 
   <div class="step">
     <h4><span class="n">۴</span> تکمیل نصب در مرورگر</h4>
     <ol>
-      <li>آدرس نصب که در پایان نمایش داده می‌شود را باز کنید، مثلاً:
+      <li>آدرس نصب را که در پایان نمایش داده می‌شود باز کنید، مثلاً:
         <div class="code"><div class="bar"><span>URL</span><button type="button" data-copy>کپی</button></div><pre>https://bot.example.com/install.php</pre></div>
       </li>
-      <li>اطلاعات دیتابیس را ببینید:
+      <li>اطلاعات دیتابیس را مشاهده کنید:
         <div class="code"><div class="bar"><span>Shell</span><button type="button" data-copy>کپی</button></div><pre>sudo cat /root/simorgh-credentials.txt</pre></div>
       </li>
       <li>توکن ربات، شناسه‌ی ادمین، نام فروشگاه و اطلاعات دیتابیس را وارد و ذخیره کنید.</li>
@@ -265,10 +291,10 @@
   </div>
 
   <div class="step">
-    <h4><span class="n">۵</span> تست ربات</h4>
+    <h4><span class="n">۵</span> آزمایش ربات</h4>
     <ol>
       <li>در تلگرام به ربات بروید و <span class="ltr">/start</span> بفرستید.</li>
-      <li>اگر پاسخ نداد، در منوی <span class="ltr">simorgh</span> گزینه‌ی <span class="ltr">5</span> را بزنید و دوباره <span class="ltr">/start</span> بفرستید.</li>
+      <li>اگر پاسخی دریافت نکردید، در منوی <span class="ltr">simorgh</span> گزینه‌ی <span class="ltr">5</span> را بزنید و دوباره <span class="ltr">/start</span> بفرستید.</li>
     </ol>
   </div>
 </div>
@@ -278,9 +304,9 @@
 <table>
   <tr><th>گزینه</th><th>کاربرد</th></tr>
   <tr><td>1</td><td>نصب ربات</td></tr>
-  <tr><td>2</td><td>حذف کامل ربات (با تأیید)</td></tr>
+  <tr><td>2</td><td>حذف کامل ربات (با تأیید شما)</td></tr>
   <tr><td>3</td><td>به‌روزرسانی با پشتیبان‌گیری از تنظیمات</td></tr>
-  <tr><td>4</td><td>نمایش زنده‌ی لاگ‌ها (Ctrl+C برای بازگشت)</td></tr>
+  <tr><td>4</td><td>نمایش زنده‌ی لاگ‌ها (برای بازگشت Ctrl+C)</td></tr>
   <tr><td>5</td><td>رفع اتصال تلگرام و نمایش وضعیت وب‌هوک</td></tr>
   <tr><td>6</td><td>خروج</td></tr>
 </table>
@@ -288,13 +314,13 @@
 
 <div class="notice danger">
   <strong>توکن را محرمانه نگه دارید.</strong>
-  توکن را هرگز در گروه، کانال یا پیام عمومی نفرستید. اگر لو رفت، با دستور <span class="ltr">/revoke</span> در BotFather آن را عوض کنید و گزینه‌ی 5 را اجرا کنید.
+  توکن را هرگز در گروه، کانال یا پیام عمومی ارسال نکنید. اگر توکن لو رفت، با دستور <span class="ltr">/revoke</span> در BotFather آن را عوض کنید و گزینه‌ی 5 را اجرا کنید.
 </div>
 
 <h3>امنیت بعد از نصب</h3>
 <ul>
-  <li>بعد از تأیید کار ربات، فایل‌های <span class="ltr">install.php</span> و <span class="ltr">selftest.php</span> را حذف کنید.</li>
-  <li>فایل <span class="ltr">/root/simorgh-credentials.txt</span> را بعد از یادداشت‌برداری جابه‌جا یا حذف کنید.</li>
+  <li>پس از تأیید عملکرد ربات، فایل‌های <span class="ltr">install.php</span> و <span class="ltr">selftest.php</span> را حذف کنید.</li>
+  <li>فایل <span class="ltr">/root/simorgh-credentials.txt</span> را پس از یادداشت‌برداری جابه‌جا یا حذف کنید.</li>
   <li>سیستم را به‌روز نگه دارید و فقط پورت‌های لازم را باز بگذارید.</li>
 </ul>
 
@@ -303,24 +329,43 @@
 <table>
   <tr><th>مشکل</th><th>راه‌حل</th></tr>
   <tr><td>دستور نصب دانلود نمی‌شود</td><td>اتصال اینترنت سرور را بررسی کنید و دستور را دوباره اجرا کنید.</td></tr>
-  <tr><td>صفحه‌ی نصب خطای 500 می‌دهد</td><td>گزینه‌ی 3 را بزنید تا به‌روز شود؛ سپس لاگ‌ها را با گزینه‌ی 4 بررسی کنید.</td></tr>
-  <tr><td>ربات به /start پاسخ نمی‌دهد</td><td>گزینه‌ی 5 را بزنید و دوباره /start بفرستید.</td></tr>
-  <tr><td>پورت مشغول است</td><td>نصب‌کننده پورت آزاد دیگری پیشنهاد می‌دهد؛ سرویس‌های دیگر را بدون اطمینان متوقف نکنید.</td></tr>
+  <tr><td>صفحه‌ی نصب خطای 500 می‌دهد</td><td>گزینه‌ی 3 را بزنید تا ربات به‌روز شود؛ سپس لاگ‌ها را با گزینه‌ی 4 بررسی کنید.</td></tr>
+  <tr><td>ربات به دستور <span class="ltr">/start</span> پاسخ نمی‌دهد</td><td>گزینه‌ی 5 را بزنید و دوباره <span class="ltr">/start</span> بفرستید.</td></tr>
+  <tr><td>پورت اشغال است</td><td>نصب‌کننده پورت آزاد دیگری پیشنهاد می‌دهد. سرویس‌های دیگر را بدون اطمینان متوقف نکنید.</td></tr>
 </table>
 </div>
 
 <h2 id="host">نصب روی هاست cPanel</h2>
-<ol>
-  <li>در cPanel وارد <span class="ltr">MySQL® Databases</span> شوید، یک دیتابیس و یک کاربر با رمز قوی بسازید و کاربر را با دسترسی <span class="ltr">ALL PRIVILEGES</span> اضافه کنید.</li>
-  <li>آخرین فایل <span class="ltr">SimorghBot-X.Y.Z.zip</span> را از بخش <span class="ltr">Releases</span> در GitHub دانلود کنید.</li>
-  <li>در File Manager فایل را در <span class="ltr">public_html</span> آپلود و Extract کنید؛ پوشه‌ی <span class="ltr">public_html/SimorghBot</span> ساخته می‌شود.</li>
-  <li>آدرس <span class="ltr">https://yourdomain.com/SimorghBot/install.php</span> را باز کنید و فرم را کامل کنید.</li>
-  <li>بعد از تأیید ربات، فایل‌های <span class="ltr">install.php</span> و <span class="ltr">selftest.php</span> را حذف کنید.</li>
-</ol>
+<div class="steps">
+  <div class="step">
+    <h4><span class="n">۱</span> ساخت پایگاه‌داده</h4>
+    <p>در cPanel وارد بخش <span class="ltr">MySQL® Databases</span> شوید، یک پایگاه‌داده و یک کاربر با رمز قوی بسازید و کاربر را با دسترسی <span class="ltr">ALL PRIVILEGES</span> به پایگاه‌داده اضافه کنید.</p>
+  </div>
+  <div class="step">
+    <h4><span class="n">۲</span> دریافت فایل‌ها</h4>
+    <p>آخرین فایل <span class="ltr">SimorghBot-X.Y.Z.zip</span> را از بخش <span class="ltr">Releases</span> در GitHub دانلود کنید.</p>
+  </div>
+  <div class="step">
+    <h4><span class="n">۳</span> استخراج در هاست</h4>
+    <p>در File Manager فایل را داخل <span class="ltr">public_html</span> آپلود و Extract کنید. پوشه‌ی <span class="ltr">public_html/SimorghBot</span> ساخته می‌شود.</p>
+  </div>
+  <div class="step">
+    <h4><span class="n">۴</span> تکمیل نصب</h4>
+    <p>آدرس زیر را باز کنید و فرم را کامل کنید:</p>
+    <div class="code">
+      <div class="bar"><span>URL</span><button type="button" data-copy>کپی</button></div>
+      <pre>https://yourdomain.com/SimorghBot/install.php</pre>
+    </div>
+  </div>
+  <div class="step">
+    <h4><span class="n">۵</span> پاک‌سازی فایل‌های نصب</h4>
+    <p>پس از تأیید ربات، فایل‌های <span class="ltr">install.php</span> و <span class="ltr">selftest.php</span> را حذف کنید.</p>
+  </div>
+</div>
 
 <h2 id="faq">پرسش‌های متداول</h2>
 <details>
-  <summary>آیا برای نصب روی سرور دامنه لازم است؟</summary>
+  <summary>آیا برای نصب روی سرور به دامنه نیاز است؟</summary>
   <p>خیر. بدون دامنه، ربات روی IP سرور با گواهی خودامضا نصب می‌شود و مرورگر هشدار نشان می‌دهد. با دامنه، گواهی معتبر و بدون هشدار دریافت می‌شود.</p>
 </details>
 <details>
@@ -336,7 +381,7 @@
   <div class="links">
     <a href="https://t.me/SimorghFree">کانال سیمرغ</a>
     <a href="https://t.me/SimorghBotGroup">گروه پشتیبانی</a>
-    <a href="https://github.com/vexrondev/Simorgh-Bot-">GitHub</a>
+    <a href="https://github.com/vexrondev/Simorgh-Bot">GitHub</a>
   </div>
   <p>سیمرغ همیشه ناظر است · مجوز MIT</p>
 </footer>
