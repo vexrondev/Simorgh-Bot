@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/vexrondev/Simorgh-Bot-/main/docs/logo-512.png" alt="SimorghBot logo" width="140">
+<img src="https://raw.githubusercontent.com/vexrondev/Simorgh-Bot-/main/assets/logo-192.png" alt="SimorghBot logo" width="140">
 
 # 💎 SimorghBot
 
