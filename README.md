@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/vexrondev/Simorgh-Bot-/main/assets/logo-192.png" alt="SimorghBot logo" width="140">
+<img src="https://raw.githubusercontent.com/vexrondev/Simorgh-Bot/main/assets/logo-192.png" alt="SimorghBot logo" width="140">
 
 # 💎 SimorghBot
 
@@ -14,7 +14,7 @@ A powerful Telegram store bot for selling panels, with fully automated setup on 
 
 [![Telegram Channel](https://img.shields.io/badge/TELEGRAM-CHANNEL-29A7E1?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/SimorghFree)
 [![Telegram Group](https://img.shields.io/badge/TELEGRAM-GROUP-29A7E1?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/SimorghBotGroup)
-[![Docs](https://img.shields.io/badge/DOCS-INSTALLATION-3FB6A8?style=for-the-badge&logo=readthedocs&logoColor=white)](https://vexrondev.github.io/Simorgh-Bot-/)
+[![Docs](https://img.shields.io/badge/DOCS-INSTALLATION-3FB6A8?style=for-the-badge&logo=readthedocs&logoColor=white)](https://vexrondev.github.io/Simorgh-Bot/)
 
 ![PHP](https://img.shields.io/badge/PHP-8.0%2B-777BB4?style=flat-square&logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-MariaDB-4479A1?style=flat-square&logo=mysql&logoColor=white)
@@ -64,8 +64,8 @@ Customers buy panels from the bot, pay from their wallet or by bank card with a 
 
 Step-by-step guides are available on the documentation site:
 
-- 🏠 [Installation on cPanel hosting](https://vexrondev.github.io/Simorgh-Bot-/)
-- 🖥️ [Installation on a server (VPS)](https://vexrondev.github.io/Simorgh-Bot-/#server)
+- 🏠 [Installation on cPanel hosting](https://vexrondev.github.io/Simorgh-Bot/)
+- 🖥️ [Installation on a server (VPS)](https://vexrondev.github.io/Simorgh-Bot/#server)
 
 <div dir="rtl">
 
@@ -104,12 +104,12 @@ Step-by-step guides are available on the documentation site:
 
 1. Connect to the server with SSH and run:
    ```bash
-   sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/vexrondev/Simorgh-Bot-/main/simorgh.sh)"
+   sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/vexrondev/Simorgh-Bot/main/simorgh.sh)"
    ```
 2. Choose **1** in the menu, then answer the domain and port questions.
 3. Open the setup address shown at the end and complete the form.
 
-For the full details of each step, see the [installation guide](https://vexrondev.github.io/Simorgh-Bot-/). The complete server guide is in [SERVER.md](SERVER.md).
+For the full details of each step, see the [installation guide](https://vexrondev.github.io/Simorgh-Bot/). The complete server guide is in [SERVER.md](SERVER.md).
 
 <div dir="rtl">
 
@@ -180,7 +180,7 @@ For the full details of each step, see the [installation guide](https://vexronde
 | The bot does not answer `/start` | Open `selftest.php` and read the "last Webhook error" row. On a VPS, run `simorgh` and choose **5**. |
 | The Mini App button does not appear | The address must use HTTPS |
 
-More solutions are in the [troubleshooting section of the guide](https://vexrondev.github.io/Simorgh-Bot-/#troubleshoot).
+More solutions are in the [troubleshooting section of the guide](https://vexrondev.github.io/Simorgh-Bot/#troubleshoot).
 
 ---
 
