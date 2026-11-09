@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-const UPD_REPO = 'Raven404xv/simorgh-bot';
+const UPD_REPO = 'vexrondev/Simorgh-Bot';
 const UPD_MAX_BYTES = 30 * 1024 * 1024;
 const UPD_KEEP_BACKUPS = 3;
 
